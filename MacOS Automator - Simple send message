@@ -1,0 +1,24 @@
+<!--Initiate - 1st step-->
+
+on run {input, parameters}
+	say "Ready!"
+	return ""
+end run
+
+
+<!--Action - 3rd step-->
+
+property targetBuddyHandle : "xxxxxxxxxx@icloud.com"
+on run {input, parameters}
+	try
+		tell application "Messages"
+			set thisBuddy to first buddy whose handle is targetBuddyHandle and ¬
+				service type of service of it is iMessage
+			set thisChat to make new text chat with properties {participants:{thisBuddy}}
+			set thisMessage to send (input as string) to thisChat
+		end tell
+		say "Done!"
+	on error errorMessage
+		say errorMessage
+	end try
+end run
