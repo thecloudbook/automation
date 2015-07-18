@@ -22,4 +22,4 @@ on run {input, parameters}
 	on error errorMessage
 		say errorMessage
 	end try
-end run 
+end run
